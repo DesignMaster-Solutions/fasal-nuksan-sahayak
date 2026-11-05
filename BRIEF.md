@@ -94,3 +94,68 @@ Size of the problem, Severity, Quality of the solution, Proven impact (also the 
 Prizes per track on codeforindia.org/hackathon (read on 05/11/2026): 1st Rs 1,50,000,
 2nd Rs 1,00,000, 3rd Rs 50,000 "per track / category"; the hub README (August) and the welcome
 e-mail say an overall podium instead. Discussion #52 asks which one applies.
+
+## Verified on 05/11/2026 (official sources; these replace the "VERIFY" items above)
+
+Source OG = *PMFBY Operational Guidelines 2023, effective from Kharif 2023*, Department of
+Agriculture & Farmers Welfare, linked from https://pmfby.gov.in/guidelines as
+https://pmfby.amnex.co.in/pmfby/pdf/operational_guidelines_pmfby.pdf (the 2020 "Revamped" OG is
+superseded by it). Quote the paragraph number on screen.
+
+- **Localized calamities** (OG 5.2.4, 21.5.1): hailstorm, landslide, inundation, cloud burst and
+  natural fire due to lightning, affecting isolated farms. Inundation = field covered or submerged
+  by water that stays for a prolonged period and causes visible damage (21.5.2). Only while the
+  crop is standing, up to harvest, within the crop calendar the State notified (21.5.4.3,
+  21.5.5.1 A). **It is an add-on**: "only available if this cover is notified by the State/UT
+  Government" (21.5.4.1) and for crops the State notified for it (21.5.3). The app must say
+  "if your State notified this cover for your crop", never "you are covered".
+- **Post-harvest losses** (OG 5.2.3, 21.6.1): hailstorm, cyclone, cyclonic rains and unseasonal
+  rains hitting harvested crop kept in the field in "cut and spread" or small bundled condition to
+  dry, **up to a maximum of two weeks (14 days) from harvesting**. Also an add-on notified by the
+  State (21.6.4.1). Unseasonal rain triggers only when the month's rain is more than 20% over the
+  long period average for the sub-district/district (21.6.2): say it, do not compute it.
+  If the crop was harvested and is lying in the field, the event falls under post-harvest, not
+  localized calamity (Table 10, row 1).
+- **72 hours**: "Immediate intimation (within 72 hours) by the insured farmer" (21.5.5.1 B,
+  21.6.6.1 B); Table 10: "Within 72 hours from the occurrence of a peril". "The intimation is a
+  pre-condition to get benefit for the localized claim" (21.5.9.2).
+- **Wide-spread calamities** (OG 5.5): for risks other than localized calamities and post-harvest,
+  "lodging of intimation for claims by insured farmers ... is not essential"; claims come from the
+  District Level Joint Committee report and/or the yield data of the State.
+- **Channels** (21.5.5.4, Table 10): first mode = the "Crop Insurance App" or the centralized
+  toll-free number of the Krishi Rakshak Portal & Helpline, **14447**; also the insurance
+  company's toll-free number, the bank branch, the local agriculture department / district
+  officials (who must forward within 48 hours, 21.5.5.6). pmfby.gov.in shows "WhatsApp ChatBot -
+  7065514447" and "Krishi Rakshak Portal Helpline - 14447" in its header (read 05/11/2026). The
+  Crop Insurance app on Google Play is `in.farmguide.farmerapp.central`, developer DAC&FW.
+  Insurance companies per State: link https://pmfby.gov.in/insuranceCompanyDirectory, never a
+  name typed by us.
+- **What the intimation must contain** (21.5.5.1 C, 21.6.6.1 C): farmer's name, affected survey
+  number wise insured crop and acreage affected, Farmer's Application No. on NCIP, mobile number,
+  KCC account no. (loanee) or savings bank account (non-loanee). Partial details are accepted and
+  the complete form may follow "within 7 days of the loss" (21.5.6.1). Photos with location via the
+  app (21.5.5.1 E).
+- **After intimation** (21.5.8, Table 10): loss assessor appointed within 48 hours; assessment
+  within the next 10 days; claim settlement in the next 15 days, subject to receipt of the premium
+  and the first instalment of subsidy. Joint survey with the farmer present (21.5.7.3). Premium must
+  have been debited before the event (21.5.4.4, 21.5.9.8).
+- **Grievance** (OG 30.2, 30.3, 30.6.1): Taluka/District grievance redressal officer acts within 7
+  days; appeal to the District Level Grievance Redressal Committee (DGRC), headed by the
+  Collector, disposes within 15 days; KRPH 14447 registers every complaint against a unique
+  ticket number shared by SMS or chatbot.
+- **Wild animal attack** (OG 5.2.5): optional add-on some States notify, premium paid in full by
+  the farmer. Say "ask 14447 or your bank whether your State notified it".
+
+Size (PIB, Ministry of Agriculture & Farmers Welfare):
+- PIB release 2304549, 29/08/2026: from Kharif 2016 to Rabi 2025-26, more than 92.46 crore farmer
+  applications insured and over 26.33 crore farmer applications paid claims exceeding Rs 2.06
+  lakh crore; 2024-25 record of more than 15.23 crore farmer applications covering more than 4
+  crore farmers; Kharif 2026: 241.38 lakh farmers insured as of 27/08/2026; KRPH toll-free 14447
+  confirmed; post-harvest cover "up to 14 days after harvesting" confirmed.
+- PIB release 2151351, 01/08/2025 (Rajya Sabha written reply): non-loanee farmer applications
+  rose from 20 lakh in 2014-15 to 522 lakh in 2024-25 (the farmers with no bank officer watching
+  their claim).
+- No official figure was found for claims rejected for late intimation: the app and the issue do
+  not claim one. Severity = OG 21.5.9.2 (no intimation, no localized claim) and the claim formula
+  (21.5.5.2: sum insured x affected area share x crop damage %), whole sum insured of the damaged
+  area at stake.
