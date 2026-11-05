@@ -1,0 +1,18 @@
+name = "fasal-nuksan-sahayak"
+main = "worker.js"
+compatibility_date = "2026-10-01"
+account_id = "1ed921eb42c9296a7db12104be5455c9" # DesignMaster (designmaster.workers.dev)
+
+# Static files are served directly; only /api/* reaches the Worker (anonymous usage counter).
+[assets]
+directory = "."
+binding = "ASSETS"
+not_found_handling = "single-page-application"
+run_worker_first = ["/api/*"]
+
+[durable_objects]
+bindings = [{ name = "COUNTER", class_name = "Counter" }]
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["Counter"]
