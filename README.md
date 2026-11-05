@@ -66,7 +66,7 @@ section "Verified on 05/11/2026". `rules.js` is pure (no DOM) and cites these pa
 | Same, more than 14 days after harvest | `post_harvest_late`: the cover runs only 14 days; still call 14447 | | 21.6.1 |
 | Landslide, waterlogging, cloud burst or lightning fire on a **cut** crop in the field | `not_listed_cut`: not a post-harvest peril; still report within 72 h through 14447 and ask | | 21.6.1, 21.5.4.3 |
 | Any peril on a crop **already taken home** | `stored`: these covers are for crop lying in the field; call 14447 if in doubt | | 21.6.1 |
-| Rain / cyclone on a standing crop; drought, dry spell, pest, disease or flood across the area | `widespread`: individual intimation "is not essential"; claims from the District Level Joint Committee report and yield data; check status via 14447 or the bank | | 5.1, 5.5 |
+| Rain / cyclone on a standing crop; drought, dry spell, pest, disease or flood across the area | `widespread`: individual intimation "is not essential"; claims from the District Level Joint Committee report and yield data; check status via 14447 or the bank; for rain or a cyclone on a standing crop the screen still says to report within 72 hours, because insurers have refused such claims for no notice ([real cases](evidence/real-cases/README.md)) | | 5.1, 5.5 |
 | Wild animals, anything else | `other`: optional add-on only some States notify; ask 14447 or the bank | | 5.2.5 |
 
 - **72 hours** (OG 21.5.5.1 B, 21.6.6.1 B, Table 10): `deadline = event + 72 h`; exactly 72:00 is

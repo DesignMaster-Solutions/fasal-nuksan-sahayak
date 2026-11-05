@@ -56,7 +56,10 @@ Where the app and the decision differ, `cases.json` says so in `divergence`:
 - **Fire of unknown cause** (Datia): the app lists only fire from lightning, and its "other" screen does not
   count a 72-hour window.
 
-The last two are gaps in the app, written down here and not yet changed.
+The last two were gaps in the app. Rain on a standing crop is now handled on screen: the app still reads it as
+area-based, as the guidelines do, but tells the farmer that insurers have refused such claims for no report within
+72 hours and to report within 72 hours anyway (test in `tests/real-cases.test.mjs`). Fire of unknown cause is still
+a gap.
 
 ## Limits
 

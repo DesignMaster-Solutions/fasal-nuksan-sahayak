@@ -3,6 +3,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { classify, needsIndividualIntimation, deadline, istToEpoch, formatIST, PERILS } from '../rules.js';
+import { STRINGS } from '../i18n.js';
 
 const dir = new URL('../evidence/real-cases/', import.meta.url);
 const { cases } = JSON.parse(readFileSync(new URL('cases.json', dir), 'utf8'));
@@ -65,4 +66,15 @@ test('aggregates written in the README match cases.json', () => {
     `${cases.length} decisions`, `${farmers.toLocaleString('en-IN')} farmers`, `${lost.length} lost`,
     `${overturned.length} overturned`, `Rs ${claimed.toLocaleString('en-IN')}`, `${individual.length} of ${cases.filter((c) => c.replay).length}`,
   ]) assert.ok(readme.includes(s), s);
+});
+
+// Rain on a standing crop stays area-based, as the guidelines say, but insurers still refused such claims for no
+// 72-hour notice (Doddaballapura, Odisha), so the screen must tell the farmer to report within 72 hours anyway.
+test('rain on a standing crop: the area-based screen still tells the farmer to report within 72 hours', () => {
+  assert.equal(classify({ peril: 'rain_cyclone', cropState: 'standing', eventEpoch: Date.now() }).kind, 'widespread');
+  const { en, hi } = STRINGS;
+  assert.match(en.kind_widespread_b, /standing crop[^.]*refused[^.]*72 hours/);
+  assert.match(en.kind_widespread_b, /report it within 72 hours anyway/);
+  assert.match(hi.kind_widespread_b, /72 घंटे के अंदर सूचना दें/);
+  assert.doesNotMatch(en.kind_widespread_t, /do not have to report/);
 });
