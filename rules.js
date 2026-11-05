@@ -74,7 +74,7 @@ const BLANK = '______';
 // The report the farmer reads out on 14447 or sends. Only what the farmer typed; blanks stay blank.
 export function intimationText(f, lang) {
   const t = STRINGS[lang];
-  const v = (x) => (x == null || String(x).trim() === '' ? BLANK : String(x).trim());
+  const v = (x) => (x == null || x === false || String(x).trim() === '' ? BLANK : String(x).trim());
   const state = STATES.find((s) => s[0] === f.state)?.[lang === 'hi' ? 1 : 0] ?? f.state;
   const lines = [
     t.r_to,

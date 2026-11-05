@@ -112,3 +112,10 @@ for (const lang of ['en', 'hi']) {
     assert.ok(!intimationText({ ...FULL, cropState: 'standing' }, lang).includes('2 ' + (lang === 'hi' ? 'नवंबर' : 'Nov')), 'no harvest line for a standing crop');
   });
 }
+
+test('an empty form prints blanks, never "false", "undefined" or "NaN"', () => {
+  for (const lang of ['en', 'hi']) {
+    const txt = intimationText({ cropState: 'cut_in_field' }, lang);
+    assert.doesNotMatch(txt, /false|undefined|NaN|null/, lang);
+  }
+});
