@@ -116,6 +116,14 @@ section "Verified on 05/11/2026". `rules.js` is pure (no DOM) and cites these pa
   claim is computed on the sum insured of the affected area (OG 21.5.5.2), so the whole sum insured
   of the damaged area is at stake when the 72 hours are missed.
 
+## Real cases
+
+8 published court and consumer-commission decisions (3,57,384 farmers, 6 States) where the insurer refused a
+claim over the 72-hour (earlier 48-hour) notice. 2 farmers' groups lost on it; 5 won, but only after 2 to 10
+years in court, and in Osmanabad 357,287 farmers were still owed Rs 225.75 crore in 2025. Each case is
+replayed through `rules.js` and the quotes are checked against the saved decisions. Details, numbers, where the
+app reads a case differently, and limits: [`evidence/real-cases`](evidence/real-cases/README.md).
+
 ## Privacy and the usage numbers
 
 Live, public and anonymous at `/stats` (JSON at `/api/stats`). The app sends, with
@@ -129,7 +137,7 @@ lines of `app.js`).
 
 ## Tests and mutation check
 
-`npm test` runs 43 tests with `node --test`, written before the code they test:
+`npm test` runs 64 tests with `node --test`; the first 43 were written before the code they test:
 
 - `tests/rules.test.mjs`: every peril x crop state maps to the right result; the 72-hour edge
   (71:59 open, 72:00 open, 72:01 closed); the post-harvest edge (day 14 inside, day 15 outside);
@@ -144,6 +152,9 @@ lines of `app.js`).
   unknown `/api/*` path 404; every other path served as a static file.
 - `tests/nostats.test.mjs`: runs the real `const NOSTATS =` / `const count =` lines of `app.js`
   with a fake browser: a normal visit sends `{event, lang}`, `?nostats` sends nothing.
+- `tests/real-cases.test.mjs`: every quote in `evidence/real-cases/cases.json` is word for word in
+  the saved decision; each real case gives the kind and the IST deadline written for it; the numbers
+  in `evidence/real-cases/README.md` match the data.
 
 Mutation check (05/11/2026): one rule changed at a time in `rules.js`, tests run, change restored.
 
@@ -155,6 +166,10 @@ Mutation check (05/11/2026): one rule changed at a time in `rules.js`, tests run
 | `cloudburst` dropped from the localized perils | cloudburst on a standing crop -> localized |
 | window check `msLeft >= 0` -> `msLeft > 0` | 72-hour edge: 71:59 open, exactly 72:00 open, 72:01 closed |
 | `hail` dropped from the post-harvest perils | hail on a cut_in_field crop -> post_harvest; post-harvest window day 14 / day 15 |
+| `WINDOW` 72 h -> 96 h | real cases: the 72-hour window the app would show (Parbhani x2, Datia, Odisha) |
+| `hail` dropped from the localized perils | real cases: the expected kind (Rajnandgaon, Chudawa, Changephal) |
+| `rain_cyclone` dropped from the post-harvest perils | real cases: the expected kind (Doddaballapura, Osmanabad, Odisha) |
+| one word changed in a saved quote | real cases: the quote is verbatim in the saved decision |
 
 The deployed app was also driven end to end in a real Chrome (05/11/2026) at 360 px and at
 1440 px with `?nostats`: hail on a standing wheat crop, rabi, a loanee farmer, the result with

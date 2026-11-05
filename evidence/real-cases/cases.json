@@ -1,0 +1,393 @@
+{
+  "_about": "Real decisions where a crop insurance claim was refused or argued over the farmer's intimation of loss within 72 (earlier 48) hours. Every field comes from the decision text saved in sources/<doc>.txt; null means the decision does not say it. The 'replay' block is ours: the decision's peril mapped to the app's peril list, and what the app's rules.js gives for it. Collected from indiankanoon.org on 2026-11-05.",
+  "cases": [
+    {
+      "id": "cg-ncdrc-2026-chandrakar",
+      "url": "https://indiankanoon.org/doc/45483787/",
+      "source": "sources/45483787.txt",
+      "forum": "National Consumer Disputes Redressal Commission (revision from State Commission Chhattisgarh and District Commission Rajnandgaon)",
+      "case_number": "NC/RP/192/2025 (FA 341/2024; CC 69/2023)",
+      "decision_date": "2026-07-03",
+      "state": "Chhattisgarh",
+      "district": "Rajnandgaon",
+      "crop": "gram",
+      "season": "Rabi",
+      "peril": "excessive rainfall and hailstorm",
+      "crop_state": "standing",
+      "event_date": null,
+      "intimation": {
+        "date": null,
+        "channel": "concerned revenue and agricultural authorities",
+        "to_insurer": false
+      },
+      "hours_rule_invoked": 72,
+      "hours_event_to_intimation": null,
+      "farmers": 1,
+      "amount_claimed_rs": null,
+      "amount_awarded_rs": 105749,
+      "outcome": "repudiation overturned",
+      "lost_for_notice": false,
+      "quote": "However, the record reveals that the Respondent had approached the competent government authorities regarding the crop loss and that the matter was subjected to verification by the concerned revenue machinery.",
+      "quote_where": "para 8",
+      "replay": {
+        "peril": "hail",
+        "mapping": "hailstorm; the Commission held hailstorm was a covered localized calamity (para 9)",
+        "expect": {
+          "standing": "localized"
+        },
+        "commission_kind": "localized",
+        "event": null,
+        "intimations": [],
+        "divergence": null
+      }
+    },
+    {
+      "id": "br-ncdrc-2026-bhojpur-five",
+      "url": "https://indiankanoon.org/doc/141556986/",
+      "source": "sources/141556986.txt",
+      "forum": "National Consumer Disputes Redressal Commission (batch of 34 revisions from State Commission Bihar)",
+      "case_number": "NC/RP/238/2026 and 33 connected; the five localized cases are probably NC/RP/533, 617, 689, 687 and 422 of 2026 (Sl. 26 to 30)",
+      "decision_date": "2026-08-06",
+      "state": "Bihar",
+      "district": "Bhojpur",
+      "crop": null,
+      "season": null,
+      "peril": null,
+      "crop_state": null,
+      "event_date": null,
+      "intimation": {
+        "date": null,
+        "channel": null,
+        "to_insurer": false
+      },
+      "hours_rule_invoked": 72,
+      "hours_event_to_intimation": null,
+      "farmers": 5,
+      "amount_claimed_rs": null,
+      "amount_awarded_rs": null,
+      "outcome": "repudiation overturned",
+      "lost_for_notice": false,
+      "quote": "However, we are unable to accept such arguments, as once such incidents have happened in those areas where even other farmers' claims have been admitted, this does not constitute a valid ground for repudiation.",
+      "quote_where": "para 19",
+      "note": "Para 19 says five of the 34 claims were 'dismissed on account of non-reporting and localized claims'. The order does not give their peril, crop or dates, so they cannot be replayed. The other 29 turned on bank data, not on notice, and are not counted here.",
+      "replay": null
+    },
+    {
+      "id": "ka-scdrc-2026-prakash",
+      "url": "https://indiankanoon.org/doc/10553029/",
+      "source": "sources/10553029.txt",
+      "forum": "Karnataka State Consumer Disputes Redressal Commission, Bengaluru (Additional Bench)",
+      "case_number": "A/1168/2023 (CC 03/2022, Bangalore I Additional District Commission, Rural)",
+      "decision_date": "2026-08-12",
+      "state": "Karnataka",
+      "district": "Bangalore Rural (Doddaballapura)",
+      "crop": "ragi (finger millet)",
+      "season": "Kharif 2020",
+      "peril": "continuous rains for a period of 20 days",
+      "crop_state": null,
+      "event_date": null,
+      "intimation": {
+        "date": "2021-07-26",
+        "channel": "Agriculture Department to the insurer, per the insurer; the farmer had met the agricultural officer earlier (date not given)",
+        "to_insurer": false
+      },
+      "hours_rule_invoked": 72,
+      "hours_event_to_intimation": null,
+      "farmers": 1,
+      "amount_claimed_rs": 33801,
+      "amount_awarded_rs": null,
+      "outcome": "repudiation overturned",
+      "lost_for_notice": false,
+      "quote": "the Appellant repudiated the claim on technical grounds such as the Respondent No.1 has not intimated the Appellant within 72 hours after loss of crops and hence fails to appoint the loss assessor.",
+      "quote_where": "para 8",
+      "replay": {
+        "peril": "rain_cyclone",
+        "mapping": "20 days of continuous rain; not inundation unless water stood on the field, which the order does not say",
+        "expect": {
+          "standing": "widespread",
+          "cut_in_field": "post_harvest"
+        },
+        "commission_kind": null,
+        "event": null,
+        "intimations": [],
+        "divergence": "If the ragi was standing, the app reads rain on a standing crop as area-based and says an individual report 'is not essential', yet the insurer still refused for no 72-hour notice. The app's area-based screen should also tell the farmer to report within 72 hours anyway."
+      }
+    },
+    {
+      "id": "mh-scdrc-2023-chudawa",
+      "url": "https://indiankanoon.org/doc/117427295/",
+      "source": "sources/117427295.txt",
+      "forum": "Maharashtra State Consumer Disputes Redressal Commission, Bench at Aurangabad",
+      "case_number": "FA 1561 to 1595 of 2019 (District Forum Parbhani)",
+      "decision_date": "2023-01-12",
+      "state": "Maharashtra",
+      "district": "Parbhani (Chudawa, Purna taluka)",
+      "crop": "Bengal gram, jowar, wheat, safflower",
+      "season": "Rabi 2017-18",
+      "peril": "hailstorm",
+      "crop_state": null,
+      "event_date": "2018-02-12",
+      "intimation": {
+        "date": null,
+        "channel": null,
+        "to_insurer": false
+      },
+      "hours_rule_invoked": 48,
+      "hours_event_to_intimation": null,
+      "farmers": 35,
+      "amount_claimed_rs": 1129582,
+      "amount_awarded_rs": null,
+      "outcome": "repudiation upheld in part: the localized hailstorm claim failed for want of intimation; only the area-yield payout of Rs 1,649/ha (gram) and Rs 4,067/ha (jowar) remained",
+      "lost_for_notice": true,
+      "quote": "There is no document showing that, the complainant informed to the authorities within stipulated period of 48 hours for the loss / damage of crops due to alleged hailstorm on 12.02.2018.",
+      "quote_where": "para 24",
+      "replay": {
+        "peril": "hail",
+        "mapping": "hailstorm",
+        "expect": {
+          "standing": "localized",
+          "cut_in_field": "post_harvest"
+        },
+        "commission_kind": "localized",
+        "event": {
+          "from": "2018-02-12T00:00",
+          "to": "2018-02-12T23:59",
+          "window_end": [
+            "15 Feb 2018, 00:00 IST",
+            "15 Feb 2018, 23:59 IST"
+          ]
+        },
+        "intimations": [],
+        "divergence": "The rule in Rabi 2017-18 was 48 hours (PMFBY guidelines of 2016). The app uses today's 72 hours (OG 2023), so for this season its window would have been 24 hours too long."
+      }
+    },
+    {
+      "id": "mh-scdrc-2024-changephal",
+      "url": "https://indiankanoon.org/doc/12420145/",
+      "source": "sources/12420145.txt",
+      "forum": "Maharashtra State Consumer Disputes Redressal Commission, Bench at Aurangabad",
+      "case_number": "FA 126 to 175 of 2021 (CC 37 to 86 of 2020, District Commission Parbhani)",
+      "decision_date": "2024-09-27",
+      "state": "Maharashtra",
+      "district": "Parbhani (Changephal, Purna taluka)",
+      "crop": "Bengal gram, jowar, wheat, safflower",
+      "season": "Rabi 2017-18",
+      "peril": "hailstorm",
+      "crop_state": null,
+      "event_date": "2018-02-12",
+      "intimation": {
+        "date": null,
+        "channel": "Talathi of the circle (revenue); the Revenue Department made panchanamas",
+        "to_insurer": false
+      },
+      "hours_rule_invoked": 48,
+      "hours_event_to_intimation": null,
+      "farmers": 50,
+      "amount_claimed_rs": 1571120,
+      "amount_claimed_note": "sum of the 'expected claim amount' column as printed; the table has OCR noise, treat as approximate",
+      "amount_awarded_rs": null,
+      "outcome": "repudiation overturned",
+      "lost_for_notice": false,
+      "quote": "In this background we do not think that, the conditions of intimation of the insured event within 48 hours to the appellant has much significance, especially when the hailstorm was wide spread affecting large number of insured farmers.",
+      "quote_where": "para 11",
+      "replay": {
+        "peril": "hail",
+        "mapping": "hailstorm",
+        "expect": {
+          "standing": "localized",
+          "cut_in_field": "post_harvest"
+        },
+        "commission_kind": "localized",
+        "event": {
+          "from": "2018-02-12T00:00",
+          "to": "2018-02-12T23:59",
+          "window_end": [
+            "15 Feb 2018, 00:00 IST",
+            "15 Feb 2018, 23:59 IST"
+          ]
+        },
+        "intimations": [],
+        "divergence": "Same hailstorm, same insurer, same taluka and same 48-hour rule as mh-scdrc-2023-chudawa, opposite result. The app uses 72 hours, as in that case."
+      }
+    },
+    {
+      "id": "mh-bhc-2022-osmanabad",
+      "url": "https://indiankanoon.org/doc/125932551/",
+      "source": "sources/125932551.txt",
+      "forum": "Bombay High Court, Bench at Aurangabad",
+      "case_number": "PIL 91 of 2021, PIL 64 of 2021, WP 6859 of 2021",
+      "decision_date": "2022-05-06",
+      "state": "Maharashtra",
+      "district": "Osmanabad",
+      "crop": "soybean",
+      "season": "Kharif 2020",
+      "peril": "heavy rainfall in October 2020 after harvesting",
+      "crop_state": "cut_in_field",
+      "event_date": null,
+      "intimation": {
+        "date": null,
+        "channel": "most farmers did not report individually; State surveys and panchanamas",
+        "to_insurer": false
+      },
+      "hours_rule_invoked": 72,
+      "hours_event_to_intimation": null,
+      "farmers": 357287,
+      "amount_claimed_rs": null,
+      "amount_awarded_rs": null,
+      "outcome": "repudiation overturned: insurer ordered to pay the post-harvest claims of the remaining 357287 farmers, failing which the State",
+      "lost_for_notice": false,
+      "quote": "There was wide-spread calamity in the Osmanabad district due to such heavy rain fall and thus no intimation within the period of 72 hours was thus required to be issued by individual agriculturists, nor it was feasible.",
+      "quote_where": "para 61",
+      "figures": [
+        {
+          "text": "about 72000 agriculturists had reported loss, out of which 60,000 agriculturists had reported loss within 72 hours",
+          "where": "para 46, insurer's counsel",
+          "source": "sources/125932551.txt"
+        },
+        {
+          "text": "to the remaining 357287 agriculturists in Osmanabad district",
+          "where": "Order",
+          "source": "sources/125932551.txt"
+        },
+        {
+          "text": "Balance amount yet to be paid 225.75",
+          "where": "para 14, State's written notes, Rs crore; execution order of 24 Nov 2025, https://indiankanoon.org/doc/100261279/",
+          "source": "sources/100261279.txt"
+        },
+        {
+          "text": "514.12 post-harvest claim (Area X Rs.18000/- ha.)",
+          "where": "para 14, total required in Rs crore for 333412 farmers",
+          "source": "sources/100261279.txt"
+        }
+      ],
+      "replay": {
+        "peril": "rain_cyclone",
+        "mapping": "heavy rain on soybean harvested and lying in the field",
+        "expect": {
+          "cut_in_field": "post_harvest"
+        },
+        "commission_kind": "widespread",
+        "event": null,
+        "intimations": [],
+        "divergence": "The app tells each farmer to report within 72 hours (post-harvest, OG 21.6); the Court held that in a district-wide calamity no individual report was required. The app's advice is the safer one: the 60,000 who reported within 72 hours were paid in 2020, the other 357287 waited for the Court."
+      }
+    },
+    {
+      "id": "od-hc-2022-dash",
+      "url": "https://indiankanoon.org/doc/122027121/",
+      "source": "sources/122027121.txt",
+      "forum": "Orissa High Court",
+      "case_number": "WP(C) 5262 of 2022 (interim order)",
+      "decision_date": "2022-10-14",
+      "state": "Odisha",
+      "district": null,
+      "crop": "paddy",
+      "season": null,
+      "peril": "cyclonic rainfall between 14th and 15th November, 2021",
+      "crop_state": null,
+      "event_date": "2021-11-14",
+      "intimation": {
+        "date": "2021-11-16",
+        "channel": "the bank; the insurer says its first intimation, from the bank, was dated 24 November 2021",
+        "to_insurer": false
+      },
+      "hours_rule_invoked": 72,
+      "hours_event_to_intimation": null,
+      "farmers": 1,
+      "amount_claimed_rs": null,
+      "amount_awarded_rs": null,
+      "outcome": "pending: interim order; final order not found",
+      "lost_for_notice": null,
+      "quote": "The insurance company (opposite party no.2) has filed counter repudiating the claim on allegation that intimation was not given within 72 hours of the calamity.",
+      "quote_where": "para 1",
+      "replay": {
+        "peril": "rain_cyclone",
+        "mapping": "cyclonic rainfall",
+        "expect": {
+          "standing": "widespread",
+          "cut_in_field": "post_harvest"
+        },
+        "commission_kind": null,
+        "event": {
+          "from": "2021-11-14T00:00",
+          "to": "2021-11-15T23:59",
+          "window_end": [
+            "17 Nov 2021, 00:00 IST",
+            "18 Nov 2021, 23:59 IST"
+          ]
+        },
+        "intimations": [
+          {
+            "who": "farmer to bank",
+            "from": "2021-11-16T00:00",
+            "to": "2021-11-16T23:59",
+            "expect": "inside"
+          },
+          {
+            "who": "bank to insurer",
+            "from": "2021-11-24T00:00",
+            "to": "2021-11-24T23:59",
+            "expect": "outside"
+          }
+        ],
+        "divergence": "The farmer reported inside the 72 hours, but to the bank; it reached the insurer 8 days later. The app's report goes straight to the insurer through 14447, the channel OG 21.5.4 names first."
+      }
+    },
+    {
+      "id": "mp-scdrc-2024-datia",
+      "url": "https://indiankanoon.org/doc/152487499/",
+      "source": "sources/152487499.txt",
+      "forum": "Madhya Pradesh State Consumer Disputes Redressal Commission, Bhopal",
+      "case_number": "FA 1843, 1844, 1847 and 1849 of 2023 (District Commission Datia)",
+      "decision_date": "2024-08-28",
+      "state": "Madhya Pradesh",
+      "district": "Datia",
+      "crop": "wheat",
+      "season": "Rabi 2018-19",
+      "peril": "fire of unknown cause",
+      "crop_state": "standing",
+      "event_date": "2019-04-22",
+      "event_date_note": "police record date; the complaint says 2019-04-02",
+      "intimation": {
+        "date": "2019-04-24",
+        "channel": "police station and Collector; nothing to the insurer or the bank",
+        "to_insurer": false
+      },
+      "hours_rule_invoked": 72,
+      "hours_event_to_intimation": null,
+      "farmers": 4,
+      "amount_claimed_rs": 362500,
+      "amount_claimed_note": "lead appeal FA 1843 only; the other three amounts are not stated",
+      "amount_awarded_rs": 0,
+      "outcome": "repudiation upheld: complaints dismissed for lack of proof, including no evidence the insurer or bank was told",
+      "lost_for_notice": true,
+      "quote": "Intimation may be given within 72 hours by the farmer either directly through the crop insurance app or dedicated toll-free number centralized call centre number of concerned insurance company.",
+      "quote_where": "para 8, the guideline the insurer cited; the Commission's own finding (para 14, Hindi) is that no evidence was produced that the inspection was reported to the insurer or the bank",
+      "replay": {
+        "peril": "other",
+        "mapping": "fire of unknown cause is not the 'fire from lightning' the app and OG 5.2.4 list",
+        "expect": {
+          "standing": "other"
+        },
+        "commission_kind": null,
+        "event": {
+          "from": "2019-04-22T00:00",
+          "to": "2019-04-22T23:59",
+          "window_end": [
+            "25 Apr 2019, 00:00 IST",
+            "25 Apr 2019, 23:59 IST"
+          ]
+        },
+        "intimations": [
+          {
+            "who": "farmer to police and Collector",
+            "from": "2019-04-24T00:00",
+            "to": "2019-04-24T23:59",
+            "expect": "inside"
+          }
+        ],
+        "divergence": "The app would not call this a covered localized loss: only fire from lightning is. Its 'other' screen talks about wild animals and does not count a 72-hour window, so it would not have pushed this farmer to report to the insurer in time. The report to the police fell inside 72 hours of the police date but never reached the insurer. Gap to close: an 'other' result should still say 'report within 72 hours through 14447'."
+      }
+    }
+  ]
+}
