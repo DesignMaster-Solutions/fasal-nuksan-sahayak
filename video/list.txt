@@ -1,0 +1,8 @@
+file '/Users/alandebortolo/Backups/impressora/fasal-nuksan-sahayak/video/s0.mp4'
+file '/Users/alandebortolo/Backups/impressora/fasal-nuksan-sahayak/video/s1.mp4'
+file '/Users/alandebortolo/Backups/impressora/fasal-nuksan-sahayak/video/s2.mp4'
+file '/Users/alandebortolo/Backups/impressora/fasal-nuksan-sahayak/video/s3.mp4'
+file '/Users/alandebortolo/Backups/impressora/fasal-nuksan-sahayak/video/s4.mp4'
+file '/Users/alandebortolo/Backups/impressora/fasal-nuksan-sahayak/video/s5.mp4'
+file '/Users/alandebortolo/Backups/impressora/fasal-nuksan-sahayak/video/s6.mp4'
+file '/Users/alandebortolo/Backups/impressora/fasal-nuksan-sahayak/video/s7.mp4'

@@ -129,7 +129,7 @@ lines of `app.js`).
 
 ## Tests and mutation check
 
-`npm test` runs 42 tests with `node --test`, written before the code they test:
+`npm test` runs 43 tests with `node --test`, written before the code they test:
 
 - `tests/rules.test.mjs`: every peril x crop state maps to the right result; the 72-hour edge
   (71:59 open, 72:00 open, 72:01 closed); the post-harvest edge (day 14 inside, day 15 outside);
@@ -153,10 +153,13 @@ Mutation check (05/11/2026): one rule changed at a time in `rules.js`, tests run
 | `POST_HARVEST_DAYS` 14 -> 15 | post-harvest window: day 14 after harvest is inside, day 15 is outside |
 | `IST_OFFSET` 5:30 -> 5:00 | IST handling does not depend on the phone time zone |
 | `cloudburst` dropped from the localized perils | cloudburst on a standing crop -> localized |
+| window check `msLeft >= 0` -> `msLeft > 0` | 72-hour edge: 71:59 open, exactly 72:00 open, 72:01 closed |
+| `hail` dropped from the post-harvest perils | hail on a cut_in_field crop -> post_harvest; post-harvest window day 14 / day 15 |
 
-The screens were also driven end to end on a real Android phone (Redmi Note 14 Pro, Chrome) at
-375 px: English and Hindi, a localized loss inside the window, a post-harvest loss with a harvest
-date, a loss past 72 hours, the docket question, and the counter with and without `?nostats`.
+The deployed app was also driven end to end in a real Chrome (05/11/2026) at 360 px and at
+1440 px with `?nostats`: hail on a standing wheat crop, rabi, a loanee farmer, the result with
+the countdown, the report in English and Hindi with blanks kept as `______`, and `/api/stats`
+still empty afterwards. The demo video ([`video/demo.json`](video/demo.json)) uses those screens.
 
 ## Limits
 

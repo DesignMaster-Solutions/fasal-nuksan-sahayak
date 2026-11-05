@@ -1,0 +1,114 @@
+{
+ "brand": "Fasal Nuksan Sahayak · open source (MIT) · Design Master Solutions LLC",
+ "voice": "Samantha",
+ "rate": 190,
+ "bg": "#22402c",
+ "accent": "#e0b43a",
+ "out": "demo.mp4",
+ "scenes": [
+  {
+   "title": "Hail on a standing crop",
+   "lines": [
+    "Under PMFBY, a localized loss",
+    "is paid only if the farmer",
+    "reports it within 72 hours",
+    "(Operational Guidelines 2023,",
+    "para 21.5.1 and 21.5.9.2).",
+    "",
+    "Fasal Nuksan Sahayak tells them",
+    "how, in English and Hindi."
+   ],
+   "shots": ["shots/01-intro.png"],
+   "say": "Hail flattens a standing crop. Under the crop insurance scheme PMFBY, this loss is paid only if the farmer reports it within 72 hours. Fasal Nuksan Sahayak tells them how, in English and Hindi."
+  },
+  {
+   "title": "What happened?",
+   "lines": [
+    "One step per screen,",
+    "big buttons, 360 px first.",
+    "",
+    "Hail, landslide, waterlogging,",
+    "cloud burst, lightning fire,",
+    "rain or cyclone, drought..."
+   ],
+   "shots": ["shots/02-peril.png"],
+   "say": "One question per screen, with big buttons. First: what happened to the crop."
+  },
+  {
+   "title": "When, and where was the crop",
+   "lines": [
+    "Today, now / Yesterday,",
+    "or a date and hour (IST)",
+    "",
+    "Standing / cut and drying",
+    "in the field (14 days",
+    "after harvest) / taken home"
+   ],
+   "shots": ["shots/03-when.png", "shots/04-cropstate.png"],
+   "say": "When it happened, in India time, and where the crop was: standing, cut and drying in the field, or already taken home."
+  },
+  {
+   "title": "The answer, with its paragraph",
+   "lines": [
+    "Report it yourself within 72 h",
+    "Deadline as date and hour IST",
+    "and a live countdown",
+    "",
+    "Every rule cites its",
+    "OG 2023 paragraph"
+   ],
+   "shots": ["shots/06-result.png"],
+   "say": "The answer: report this loss yourself, before this date and hour, with a live countdown, and the paragraph of the guidelines it relies on."
+  },
+  {
+   "title": "Where to report, fastest first",
+   "lines": [
+    "Call 14447 (Krishi Rakshak)",
+    "Crop Insurance app",
+    "WhatsApp chatbot 7065514447",
+    "Insurance company of the State",
+    "Bank or agriculture office",
+    "",
+    "A ready report to read out,",
+    "copy or send on WhatsApp"
+   ],
+   "shots": ["shots/07-report.png"],
+   "say": "Then the fastest channels, starting with the toll-free 14447, what to have ready, and a report to read out on the call. Blanks stay blank: nothing is invented."
+  },
+  {
+   "title": "One tap: Hindi",
+   "lines": [
+    "The whole answer in Hindi,",
+    "remembered on the phone"
+   ],
+   "shots": ["shots/08-hindi.png"],
+   "say": "One tap, and everything is in Hindi."
+  },
+  {
+   "title": "Rules tested, mutants killed",
+   "lines": [
+    "72 h edge: 72:00 open, 72:01 closed",
+    "Post-harvest: day 14 in, day 15 out",
+    "IST on any phone time zone",
+    "Each test seen failing first"
+   ],
+   "mono_cmd": "node --test",
+   "mono_cwd": "..",
+   "mono_grep": ["ℹ tests", "ℹ pass", "ℹ fail"],
+   "say": "The rules are tested at the edges: the 72 hour deadline, the 14 days after harvest, and India time on any phone. Each test was seen failing first."
+  },
+  {
+   "title": "Fasal Nuksan Sahayak",
+   "lines": [
+    "fasal-nuksan-sahayak.designmaster.workers.dev",
+    "",
+    "Free, open source, no login, no ads",
+    "Under 25 KB gzipped, built for 3G",
+    "Anonymous usage at /stats",
+    "",
+    "github.com/DesignMaster-Solutions/fasal-nuksan-sahayak"
+   ],
+   "say": "Fasal Nuksan Sahayak: free, open source, and light enough for a cheap phone on 3G."
+  }
+ ]
+}
