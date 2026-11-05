@@ -17,6 +17,8 @@ rain on a harvested crop still drying in the field, it tells the farmer, in Engl
 
 Built for *Code for a Billion 2026*, track **Agriculture**. Not a government service.
 
+Live app: <https://fasal-nuksan-sahayak.designmaster.workers.dev> · usage numbers: [/stats](https://fasal-nuksan-sahayak.designmaster.workers.dev/stats) · demo video (68 s): <https://youtu.be/gWyG3OXiemE> (file: [video/demo.mp4](video/demo.mp4))
+
 - Static web app: `index.html`, `app.js`, `rules.js`, `i18n.js`, `styles.css`, plus `stats.html`.
   No framework, no dependency, no paid API, no cookies, no account. About 61 KB in total before
   compression (under 25 KB gzipped), so it loads on a cheap phone on 3G. Everything the farmer
