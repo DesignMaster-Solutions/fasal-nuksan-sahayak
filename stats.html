@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fasal Nuksan Sahayak · Usage numbers</title>
+  <meta name="description" content="Live, anonymous usage counts of Fasal Nuksan Sahayak: crop-loss reports prepared, reports prepared while the 72-hour window was still open, shares and docket numbers received, by language and by day.">
+  <meta name="theme-color" content="#24452b">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="top"><div class="wrap top-row"><a class="brand" href="/">Fasal Nuksan Sahayak</a><span>Usage numbers</span></div></header>
+  <main class="wrap">
+    <h1>Live usage, counted without personal data</h1>
+    <p class="hint">Every number below is a real event from the public app. We count only the event name and the language. The peril, the State, the report text, names, phone and account numbers and IP addresses are never sent or stored. Raw data: <a href="/api/stats">/api/stats</a> (JSON).</p>
+    <h2>Totals since <span id="since"></span></h2>
+    <table id="totals"><tbody></tbody></table>
+    <p class="card" id="open-share"></p>
+    <h2>By language</h2>
+    <table id="langs"><thead><tr><th></th><th>Reports</th><th>72 h open</th><th>Shares</th><th>Docket yes</th><th>Docket no</th></tr></thead><tbody></tbody></table>
+    <h2>By day (UTC)</h2>
+    <table id="days"><thead><tr><th>Day</th><th>Reports</th><th>72 h open</th><th>Shares</th><th>Docket yes</th><th>Docket no</th></tr></thead><tbody></tbody></table>
+    <p class="hint">Reports = result cards shown after the five questions. 72 h open = reports prepared while an individual 72-hour intimation window (localized calamity, post-harvest loss, or a cut crop to report through 14447) was still open. Shares = report copied or sent on WhatsApp. Docket yes / no = answers to "Did you get a docket / ticket number from 14447 or the app?" ("Not yet" is not counted).</p>
+  </main>
+  <footer class="wrap foot"><p>Free and open-source: <a href="https://github.com/DesignMaster-Solutions/fasal-nuksan-sahayak">github.com/DesignMaster-Solutions/fasal-nuksan-sahayak</a></p></footer>
+  <script type="module">
+    const EVENTS = ['report', 'open', 'share', 'docket_yes', 'docket_no'];
+    const LABEL = {
+      report: 'Reports prepared', open: 'Reports prepared while the 72 h window was still open',
+      share: 'Shares (copy or WhatsApp)', docket_yes: 'Got a docket / ticket number', docket_no: 'Did not get a docket number',
+    };
+    const { since, counts } = await (await fetch('/api/stats', { cache: 'no-store' })).json();
+    const n = (k) => counts[k] || 0;
+    document.getElementById('since').textContent = since;
+    const row = (cells) => `<tr>${cells.map((c, i) => (i === 0 ? `<th>${c}</th>` : `<td>${c}</td>`)).join('')}</tr>`;
+    document.querySelector('#totals tbody').innerHTML = EVENTS.map((e) => row([LABEL[e], n(`total:${e}`)])).join('');
+    document.getElementById('open-share').textContent = n('total:report')
+      ? `${n('total:open')} of ${n('total:report')} reports (${Math.round((100 * n('total:open')) / n('total:report'))}%) were prepared while the 72-hour window was still open.`
+      : 'No reports yet.';
+    const group = (prefix) => [...new Set(Object.keys(counts).filter((k) => k.startsWith(prefix)).map((k) => k.split(':')[1]))].sort();
+    const NAME = { en: 'English', hi: 'Hindi' };
+    document.querySelector('#langs tbody').innerHTML = group('lang:').map((l) => row([NAME[l] || l, ...EVENTS.map((e) => n(`lang:${l}:${e}`))])).join('');
+    document.querySelector('#days tbody').innerHTML = group('day:').reverse().map((d) => row([d, ...EVENTS.map((e) => n(`day:${d}:${e}`))])).join('');
+  </script>
+</body>
+</html>

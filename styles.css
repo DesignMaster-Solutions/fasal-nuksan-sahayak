@@ -83,3 +83,5 @@ legend { font-weight: 500; margin-bottom: .3rem; }
 table { border-collapse: collapse; width: 100%; margin: .5rem 0 1.25rem; background: #fff; }
 th, td { text-align: left; padding: .5rem .6rem; border-bottom: 1px solid var(--line); font-variant-numeric: tabular-nums; }
 thead th { color: var(--muted); font-weight: 500; font-size: .85rem; }
+.foot { overflow-wrap: anywhere; }
+@media (max-width: 420px) { th, td { padding: .45rem .25rem; font-size: .85rem; } thead th { font-size: .75rem; } }
