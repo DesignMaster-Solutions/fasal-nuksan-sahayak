@@ -1,0 +1,6 @@
+# fasal-nuksan-sahayak: free, open-source helper for citizens of India. Everyone is welcome, including AI crawlers.
+User-agent: *
+Allow: /
+Disallow: /api/
+
+Sitemap: https://fasal-nuksan-sahayak.designmaster.workers.dev/sitemap.xml
