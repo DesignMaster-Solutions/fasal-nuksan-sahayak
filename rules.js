@@ -8,7 +8,7 @@ export const IST_OFFSET = (5 * 60 + 30) * MIN; // India has no daylight saving t
 export const WINDOW = 72 * 60 * MIN; // OG 21.5.5.1 B, 21.6.6.1 B, Table 10
 export const POST_HARVEST_DAYS = 14; // OG 21.6.1
 
-export const PERILS = ['hail', 'landslide', 'inundation', 'cloudburst', 'lightning_fire', 'rain_cyclone', 'drought_pest', 'other'];
+export const PERILS = ['hail', 'landslide', 'inundation', 'cloudburst', 'lightning_fire', 'fire_other', 'rain_cyclone', 'drought_pest', 'other'];
 export const CROP_STATES = ['standing', 'cut_in_field', 'stored'];
 const LOCALIZED = ['hail', 'landslide', 'inundation', 'cloudburst', 'lightning_fire']; // OG 5.2.4, 21.5.1
 const POST_HARVEST = ['hail', 'rain_cyclone']; // OG 5.2.3, 21.6.1
@@ -21,6 +21,9 @@ const REFS = {
   stored: ['21.6.1'],
   widespread: ['5.1', '5.5'],
   other: ['5.2.5'],
+  // Fire not from lightning: not in the OG 5.2.4 list, but the cause is settled by the survey, not by the
+  // farmer (Datia, MP SCDRC 2024: told only the police and the Collector, claim lost). Report anyway.
+  fire_other: ['5.2.4', '21.5.1', '21.5.5.1', '21.5.5.6'],
 };
 
 // "YYYY-MM-DD" + "HH:MM" read as India time -> epoch ms. Date.UTC never looks at the phone's zone.
@@ -50,19 +53,20 @@ export function classify({ peril, cropState, eventEpoch, harvestDate }) {
   if (cropState === 'stored') kind = 'stored';
   else if (peril === 'other') kind = 'other';
   else if (peril === 'drought_pest') kind = 'widespread';
-  else if (cropState === 'standing') kind = LOCALIZED.includes(peril) ? 'localized' : 'widespread';
+  else if (cropState === 'standing') kind = LOCALIZED.includes(peril) ? 'localized' : peril === 'fire_other' ? 'fire_other' : 'widespread';
   else if (!POST_HARVEST.includes(peril)) kind = 'not_listed_cut';
   else {
     // Harvest day is day 0; day 14 is still inside. No harvest date given: not judged late.
     const days = harvestDate ? istDay(eventEpoch) - istDay(istToEpoch(harvestDate)) : 0;
     kind = days <= POST_HARVEST_DAYS ? 'post_harvest' : 'post_harvest_late';
   }
-  const caveats = kind === 'localized' || kind === 'post_harvest' ? ['caveat_notified', 'caveat_premium'] : [];
+  const caveats = ['localized', 'post_harvest', 'fire_other'].includes(kind) ? ['caveat_notified', 'caveat_premium'] : [];
   if (kind === 'post_harvest' && peril === 'rain_cyclone') caveats.push('caveat_unseasonal');
+  if (kind === 'fire_other') caveats.push('caveat_fire_cause');
   return { kind, refs: REFS[kind], caveats };
 }
 
-export const needsIndividualIntimation = (kind) => ['localized', 'post_harvest', 'not_listed_cut'].includes(kind);
+export const needsIndividualIntimation = (kind) => ['localized', 'post_harvest', 'not_listed_cut', 'fire_other'].includes(kind);
 export const deadline = (eventEpoch) => eventEpoch + WINDOW;
 export function status(eventEpoch, nowEpoch) {
   const msLeft = deadline(eventEpoch) - nowEpoch;

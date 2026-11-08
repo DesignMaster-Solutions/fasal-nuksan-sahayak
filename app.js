@@ -17,7 +17,7 @@ const count = (event) => NOSTATS || navigator.sendBeacon?.('/api/event', JSON.st
 
 const STEPS = ['peril', 'when', 'cropstate', 'crop', 'insured'];
 const ICON = {
-  hail: '🌨️', landslide: '⛰️', inundation: '🌊', cloudburst: '⛈️', lightning_fire: '🔥', rain_cyclone: '🌀', drought_pest: '🐛', other: '🐗',
+  hail: '🌨️', landslide: '⛰️', inundation: '🌊', cloudburst: '⛈️', lightning_fire: '🔥', fire_other: '🚒', rain_cyclone: '🌀', drought_pest: '🐛', other: '🐗',
   standing: '🌾', cut_in_field: '✂️', stored: '🏠', loan: '🏦', csc: '🏢', portal: '📱', unsure: '❓',
 };
 const INSURED = ['loan', 'csc', 'portal', 'unsure'];

@@ -11,16 +11,16 @@ const ev = istToEpoch('2026-11-05', '14:30');
 const EXPECTED = {
   standing: {
     hail: 'localized', landslide: 'localized', inundation: 'localized', cloudburst: 'localized',
-    lightning_fire: 'localized', rain_cyclone: 'widespread', drought_pest: 'widespread', other: 'other',
+    lightning_fire: 'localized', fire_other: 'fire_other', rain_cyclone: 'widespread', drought_pest: 'widespread', other: 'other',
   },
   cut_in_field: {
     hail: 'post_harvest', landslide: 'not_listed_cut', inundation: 'not_listed_cut', cloudburst: 'not_listed_cut',
-    lightning_fire: 'not_listed_cut', rain_cyclone: 'post_harvest', drought_pest: 'widespread', other: 'other',
+    lightning_fire: 'not_listed_cut', fire_other: 'not_listed_cut', rain_cyclone: 'post_harvest', drought_pest: 'widespread', other: 'other',
   },
-  stored: Object.fromEntries(['hail', 'landslide', 'inundation', 'cloudburst', 'lightning_fire', 'rain_cyclone', 'drought_pest', 'other'].map((p) => [p, 'stored'])),
+  stored: Object.fromEntries(['hail', 'landslide', 'inundation', 'cloudburst', 'lightning_fire', 'fire_other', 'rain_cyclone', 'drought_pest', 'other'].map((p) => [p, 'stored'])),
 };
 
-test('there are exactly the eight perils of the brief', () => {
+test('there are exactly the nine perils of the brief (eight plus fire of unknown cause, Datia)', () => {
   assert.deepEqual([...PERILS].sort(), Object.keys(EXPECTED.standing).sort());
 });
 
@@ -34,11 +34,19 @@ for (const [cropState, byPeril] of Object.entries(EXPECTED)) {
   }
 }
 
-test('individual intimation is needed only for localized, post_harvest and not_listed_cut', () => {
-  const yes = ['localized', 'post_harvest', 'not_listed_cut'];
-  for (const k of ['localized', 'post_harvest', 'post_harvest_late', 'not_listed_cut', 'stored', 'widespread', 'other']) {
+test('individual intimation is needed only for localized, post_harvest, not_listed_cut and fire_other', () => {
+  const yes = ['localized', 'post_harvest', 'not_listed_cut', 'fire_other'];
+  for (const k of ['localized', 'post_harvest', 'post_harvest_late', 'not_listed_cut', 'fire_other', 'stored', 'widespread', 'other']) {
     assert.equal(needsIndividualIntimation(k), yes.includes(k), k);
   }
+});
+
+test('fire not from lightning on a standing crop: 72-hour push, survey decides the cause (Datia)', () => {
+  const r = classify({ peril: 'fire_other', cropState: 'standing', eventEpoch: ev });
+  assert.equal(r.kind, 'fire_other');
+  assert.ok(needsIndividualIntimation(r.kind), 'the farmer must still report within 72 hours');
+  assert.deepEqual(r.caveats, ['caveat_notified', 'caveat_premium', 'caveat_fire_cause']);
+  assert.ok(['5.2.4', '21.5.5.6'].every((p) => r.refs.includes(p)), 'cites the lightning-only list and the 48-hour forwarding duty');
 });
 
 test('individual cover results carry the add-on and premium caveats with their paragraphs', () => {

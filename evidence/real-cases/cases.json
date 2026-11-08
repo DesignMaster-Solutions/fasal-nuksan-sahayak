@@ -364,10 +364,10 @@
       "quote": "Intimation may be given within 72 hours by the farmer either directly through the crop insurance app or dedicated toll-free number centralized call centre number of concerned insurance company.",
       "quote_where": "para 8, the guideline the insurer cited; the Commission's own finding (para 14, Hindi) is that no evidence was produced that the inspection was reported to the insurer or the bank",
       "replay": {
-        "peril": "other",
-        "mapping": "fire of unknown cause is not the 'fire from lightning' the app and OG 5.2.4 list",
+        "peril": "fire_other",
+        "mapping": "fire of unknown cause: not the 'fire from lightning' OG 5.2.4 lists, so the app's fire_other peril (added 08/11/2026 from this case) tells the farmer to report within 72 hours anyway and lets the survey decide the cause",
         "expect": {
-          "standing": "other"
+          "standing": "fire_other"
         },
         "commission_kind": null,
         "event": {

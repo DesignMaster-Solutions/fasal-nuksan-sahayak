@@ -37,9 +37,10 @@ on this page against `cases.json`.
 
 ## What the app would have said
 
-- In 6 of 7 replayable cases the app tells the farmer, for at least one crop state the decision allows, to
-  report the loss himself within 72 hours. Where the court named the kind (localized for hail in Rajnandgaon,
-  Chudawa and Changephal), the app gives the same kind.
+- In 7 of 7 replayable cases the app tells the farmer, for at least one crop state the decision allows, to
+  report the loss himself within 72 hours (Datia since 08/11/2026, when "fire not from lightning, or cause not
+  known" became its own peril). Where the court named the kind (localized for hail in Rajnandgaon, Chudawa and
+  Changephal), the app gives the same kind.
 - Where the decision gives the event date, the test checks the deadline the app shows: 15 Feb 2018 for the
   Parbhani hailstorm, 17 to 18 Nov 2021 for Odisha, 25 Apr 2019 for Datia.
 - Odisha: the farmer's report to the bank fell inside the 72 hours; the bank's report to the insurer fell
@@ -53,13 +54,16 @@ Where the app and the decision differ, `cases.json` says so in `divergence`:
   tells the farmer to report. That is the safer advice, not the court's reading.
 - **Rain on a standing crop** (Doddaballapura, Odisha if the paddy was standing): the app reads it as
   area-based and says an individual report "is not essential", yet insurers still refused for no 72-hour notice.
-- **Fire of unknown cause** (Datia): the app lists only fire from lightning, and its "other" screen does not
-  count a 72-hour window.
+- **Fire of unknown cause** (Datia): until 08/11/2026 the app listed only fire from lightning, and its "other"
+  screen did not count a 72-hour window.
 
-The last two were gaps in the app. Rain on a standing crop is now handled on screen: the app still reads it as
-area-based, as the guidelines do, but tells the farmer that insurers have refused such claims for no report within
-72 hours and to report within 72 hours anyway (test in `tests/real-cases.test.mjs`). Fire of unknown cause is still
-a gap.
+The last two were gaps in the app; both are now handled on screen. Rain on a standing crop: the app still reads it
+as area-based, as the guidelines do, but tells the farmer that insurers have refused such claims for no report
+within 72 hours and to report within 72 hours anyway. Fire not from lightning, or of unknown cause, is its own
+peril (`fire_other`) since 08/11/2026: the screen says the localized cover lists only natural fire from lightning
+(OG 5.2.4), that the insurer's survey decides the cause, not the farmer, and that the loss must still be reported
+to the insurer within 72 hours (a police or Collector report does not replace it, which is what sank the Datia
+claim). Both have tests in `tests/real-cases.test.mjs` and `tests/rules.test.mjs`.
 
 ## Limits
 
