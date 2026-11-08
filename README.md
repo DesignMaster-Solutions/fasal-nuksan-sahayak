@@ -183,7 +183,11 @@ still empty afterwards. The demo video ([`video/demo.json`](video/demo.json)) us
 
 - PMFBY covers are notified **State by State, crop by crop and season by season**; localized and
   post-harvest covers are add-ons. The app says "only if your State notified this cover for your
-  crop" and never "you are covered". It does not know your State's notification.
+  crop" and never "you are covered". It does not know your State's notification: the portal's
+  list of notified States and add-on covers (`/common/getNotifiedStates` on pmfby.gov.in) answers
+  `unauthorized` without a login (read 8 November 2026), so the app tells the farmer how to check
+  instead (14447, the bank, CSC or agriculture office that enrolled them, the enrolment receipt or
+  the policy in the Crop Insurance app).
 - Unseasonal rain is covered only above 20% of the long period average (OG 21.6.2); the app does
   not compute it.
 - The app does not file anything: the farmer still has to call 14447 or use the app.

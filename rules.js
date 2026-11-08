@@ -60,7 +60,7 @@ export function classify({ peril, cropState, eventEpoch, harvestDate }) {
     const days = harvestDate ? istDay(eventEpoch) - istDay(istToEpoch(harvestDate)) : 0;
     kind = days <= POST_HARVEST_DAYS ? 'post_harvest' : 'post_harvest_late';
   }
-  const caveats = ['localized', 'post_harvest', 'fire_other'].includes(kind) ? ['caveat_notified', 'caveat_premium'] : [];
+  const caveats = ['localized', 'post_harvest', 'fire_other'].includes(kind) ? ['caveat_notified', 'caveat_notified_how', 'caveat_premium'] : [];
   if (kind === 'post_harvest' && peril === 'rain_cyclone') caveats.push('caveat_unseasonal');
   if (kind === 'fire_other') caveats.push('caveat_fire_cause');
   return { kind, refs: REFS[kind], caveats };

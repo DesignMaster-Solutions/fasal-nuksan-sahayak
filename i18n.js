@@ -85,6 +85,7 @@ export const STRINGS = {
     rule_ref: 'PMFBY Operational Guidelines 2023, para {refs}',
     caveat_notified: 'Only if your State notified this cover for your crop (OG 21.5.4.1 for localized calamities, 21.6.4.1 for post-harvest losses).',
     caveat_premium: 'Only if your premium was debited before the event (OG 21.5.4.4).',
+    caveat_notified_how: 'How to check: call 14447 (toll-free) or ask the bank, CSC or agriculture office that enrolled you whether this cover is notified for your crop and district this season; your enrolment receipt or the policy in the Crop Insurance app names the crop and the scheme. The list of notified States and add-on covers on pmfby.gov.in is behind a login, so this app cannot read it.',
     caveat_unseasonal: 'Unseasonal rain counts only when the month\'s rain is more than 20% above the long period average for your area (OG 21.6.2). The insurer checks this, not you.',
 
     deadline: 'Report before {deadline}',
@@ -247,6 +248,7 @@ export const STRINGS = {
     rule_ref: 'PMFBY संचालन दिशानिर्देश 2023, पैरा {refs}',
     caveat_notified: 'सिर्फ़ तब, जब आपके राज्य ने आपकी फ़सल के लिए यह कवर अधिसूचित किया हो (OG 21.5.4.1 स्थानीय आपदा, 21.6.4.1 कटाई के बाद का नुक़सान)।',
     caveat_premium: 'सिर्फ़ तब, जब आपका प्रीमियम घटना से पहले कट चुका हो (OG 21.5.4.4)।',
+    caveat_notified_how: 'कैसे जाँचें: 14447 (टोल-फ़्री) पर कॉल करें या जिस बैंक, CSC या कृषि कार्यालय से बीमा कराया था, वहाँ पूछें कि इस मौसम में आपकी फ़सल और ज़िले के लिए यह कवर अधिसूचित है या नहीं; आपकी बीमा रसीद या Crop Insurance ऐप की पॉलिसी में फ़सल और योजना लिखी होती है। pmfby.gov.in पर अधिसूचित राज्यों और ऐड-ऑन कवर की सूची लॉगिन के पीछे है, इसलिए यह ऐप उसे नहीं पढ़ सकता।',
     caveat_unseasonal: 'बेमौसम बारिश तभी गिनी जाती है जब उस महीने की बारिश आपके इलाक़े के दीर्घकालिक औसत से 20% से ज़्यादा हो (OG 21.6.2)। यह जाँच बीमा कंपनी करती है, आप नहीं।',
 
     deadline: '{deadline} से पहले सूचना दें',

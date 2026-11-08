@@ -45,13 +45,14 @@ test('fire not from lightning on a standing crop: 72-hour push, survey decides t
   const r = classify({ peril: 'fire_other', cropState: 'standing', eventEpoch: ev });
   assert.equal(r.kind, 'fire_other');
   assert.ok(needsIndividualIntimation(r.kind), 'the farmer must still report within 72 hours');
-  assert.deepEqual(r.caveats, ['caveat_notified', 'caveat_premium', 'caveat_fire_cause']);
+  assert.deepEqual(r.caveats, ['caveat_notified', 'caveat_notified_how', 'caveat_premium', 'caveat_fire_cause']);
   assert.ok(['5.2.4', '21.5.5.6'].every((p) => r.refs.includes(p)), 'cites the lightning-only list and the 48-hour forwarding duty');
 });
 
 test('individual cover results carry the add-on and premium caveats with their paragraphs', () => {
   const loc = classify({ peril: 'hail', cropState: 'standing', eventEpoch: ev });
   assert.ok(loc.caveats.includes('caveat_notified') && loc.caveats.includes('caveat_premium'));
+  assert.ok(loc.caveats.includes('caveat_notified_how'), 'the farmer is told how to check the State notification');
   assert.ok(['5.2.4', '21.5.4.1', '21.5.4.4'].every((p) => loc.refs.includes(p)));
   const ph = classify({ peril: 'rain_cyclone', cropState: 'cut_in_field', eventEpoch: ev, harvestDate: '2026-11-01' });
   assert.ok(ph.caveats.includes('caveat_notified') && ph.caveats.includes('caveat_premium'));
