@@ -11,16 +11,16 @@ const ev = istToEpoch('2026-11-05', '14:30');
 const EXPECTED = {
   standing: {
     hail: 'localized', landslide: 'localized', inundation: 'localized', cloudburst: 'localized',
-    lightning_fire: 'localized', fire_other: 'fire_other', rain_cyclone: 'widespread', drought_pest: 'widespread', other: 'other',
+    lightning_fire: 'localized', fire_other: 'fire_other', rain_cyclone: 'widespread', drought_pest: 'widespread', wild_animal: 'wild_animal', other: 'other',
   },
   cut_in_field: {
     hail: 'post_harvest', landslide: 'not_listed_cut', inundation: 'not_listed_cut', cloudburst: 'not_listed_cut',
-    lightning_fire: 'not_listed_cut', fire_other: 'not_listed_cut', rain_cyclone: 'post_harvest', drought_pest: 'widespread', other: 'other',
+    lightning_fire: 'not_listed_cut', fire_other: 'not_listed_cut', rain_cyclone: 'post_harvest', drought_pest: 'widespread', wild_animal: 'wild_animal', other: 'other',
   },
-  stored: Object.fromEntries(['hail', 'landslide', 'inundation', 'cloudburst', 'lightning_fire', 'fire_other', 'rain_cyclone', 'drought_pest', 'other'].map((p) => [p, 'stored'])),
+  stored: Object.fromEntries(['hail', 'landslide', 'inundation', 'cloudburst', 'lightning_fire', 'fire_other', 'rain_cyclone', 'drought_pest', 'wild_animal', 'other'].map((p) => [p, 'stored'])),
 };
 
-test('there are exactly the nine perils of the brief (eight plus fire of unknown cause, Datia)', () => {
+test('there are exactly the ten perils (eight of the brief, fire of unknown cause from Datia, wild animals from Kharif 2026)', () => {
   assert.deepEqual([...PERILS].sort(), Object.keys(EXPECTED.standing).sort());
 });
 
@@ -34,9 +34,9 @@ for (const [cropState, byPeril] of Object.entries(EXPECTED)) {
   }
 }
 
-test('individual intimation is needed only for localized, post_harvest, not_listed_cut and fire_other', () => {
-  const yes = ['localized', 'post_harvest', 'not_listed_cut', 'fire_other'];
-  for (const k of ['localized', 'post_harvest', 'post_harvest_late', 'not_listed_cut', 'fire_other', 'stored', 'widespread', 'other']) {
+test('individual intimation is needed only for localized, post_harvest, not_listed_cut, fire_other and wild_animal', () => {
+  const yes = ['localized', 'post_harvest', 'not_listed_cut', 'fire_other', 'wild_animal'];
+  for (const k of ['wild_animal', 'localized', 'post_harvest', 'post_harvest_late', 'not_listed_cut', 'fire_other', 'stored', 'widespread', 'other']) {
     assert.equal(needsIndividualIntimation(k), yes.includes(k), k);
   }
 });
@@ -127,4 +127,18 @@ test('an empty form prints blanks, never "false", "undefined" or "NaN"', () => {
     const txt = intimationText({ cropState: 'cut_in_field' }, lang);
     assert.doesNotMatch(txt, /false|undefined|NaN|null/, lang);
   }
+});
+
+// PIB release 2191224 (18/11/2025): from Kharif 2026 wild animal attack is the fifth add-on under localised
+// risk and the farmer must report within 72 hours in the Crop Insurance App with geotagged photographs.
+test('wild animal attack: 72-hour clock and the Crop Insurance app with photos (PIB 18/11/2025, Kharif 2026)', async () => {
+  const { STRINGS } = await import('../i18n.js');
+  const r = classify({ peril: 'wild_animal', cropState: 'standing', eventEpoch: ev });
+  assert.equal(r.kind, 'wild_animal');
+  assert.ok(needsIndividualIntimation(r.kind));
+  assert.deepEqual(r.caveats, ['caveat_wild_notified', 'caveat_premium']);
+  assert.match(STRINGS.en.kind_wild_animal_b, /Kharif 2026/);
+  assert.match(STRINGS.en.kind_wild_animal_b, /within 72 hours in the Crop Insurance app[^.]*geotagged photographs/);
+  assert.match(STRINGS.hi.kind_wild_animal_b, /72 घंटे के अंदर/);
+  for (const lang of ['en', 'hi']) assert.doesNotMatch(STRINGS[lang].kind_other_b + STRINGS[lang].peril_other, /wild animal|जंगली/i);
 });

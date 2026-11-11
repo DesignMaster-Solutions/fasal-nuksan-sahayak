@@ -8,7 +8,7 @@ export const IST_OFFSET = (5 * 60 + 30) * MIN; // India has no daylight saving t
 export const WINDOW = 72 * 60 * MIN; // OG 21.5.5.1 B, 21.6.6.1 B, Table 10
 export const POST_HARVEST_DAYS = 14; // OG 21.6.1
 
-export const PERILS = ['hail', 'landslide', 'inundation', 'cloudburst', 'lightning_fire', 'fire_other', 'rain_cyclone', 'drought_pest', 'other'];
+export const PERILS = ['hail', 'landslide', 'inundation', 'cloudburst', 'lightning_fire', 'fire_other', 'rain_cyclone', 'drought_pest', 'wild_animal', 'other'];
 export const CROP_STATES = ['standing', 'cut_in_field', 'stored'];
 const LOCALIZED = ['hail', 'landslide', 'inundation', 'cloudburst', 'lightning_fire']; // OG 5.2.4, 21.5.1
 const POST_HARVEST = ['hail', 'rain_cyclone']; // OG 5.2.3, 21.6.1
@@ -21,6 +21,9 @@ const REFS = {
   stored: ['21.6.1'],
   widespread: ['5.1', '5.5'],
   other: ['5.2.5'],
+  // PIB release 2191224, 18/11/2025: from Kharif 2026 the fifth add-on under localised risk, reported within
+  // 72 hours in the Crop Insurance App with geotagged photographs; the State notifies animals and districts.
+  wild_animal: ['5.2.5'],
   // Fire not from lightning: not in the OG 5.2.4 list, but the cause is settled by the survey, not by the
   // farmer (Datia, MP SCDRC 2024: told only the police and the Collector, claim lost). Report anyway.
   fire_other: ['5.2.4', '21.5.1', '21.5.5.1', '21.5.5.6'],
@@ -52,6 +55,7 @@ export function classify({ peril, cropState, eventEpoch, harvestDate }) {
   let kind;
   if (cropState === 'stored') kind = 'stored';
   else if (peril === 'other') kind = 'other';
+  else if (peril === 'wild_animal') kind = 'wild_animal';
   else if (peril === 'drought_pest') kind = 'widespread';
   else if (cropState === 'standing') kind = LOCALIZED.includes(peril) ? 'localized' : peril === 'fire_other' ? 'fire_other' : 'widespread';
   else if (!POST_HARVEST.includes(peril)) kind = 'not_listed_cut';
@@ -63,10 +67,11 @@ export function classify({ peril, cropState, eventEpoch, harvestDate }) {
   const caveats = ['localized', 'post_harvest', 'fire_other'].includes(kind) ? ['caveat_notified', 'caveat_notified_how', 'caveat_premium'] : [];
   if (kind === 'post_harvest' && peril === 'rain_cyclone') caveats.push('caveat_unseasonal');
   if (kind === 'fire_other') caveats.push('caveat_fire_cause');
+  if (kind === 'wild_animal') caveats.push('caveat_wild_notified', 'caveat_premium');
   return { kind, refs: REFS[kind], caveats };
 }
 
-export const needsIndividualIntimation = (kind) => ['localized', 'post_harvest', 'not_listed_cut', 'fire_other'].includes(kind);
+export const needsIndividualIntimation = (kind) => ['localized', 'post_harvest', 'not_listed_cut', 'fire_other', 'wild_animal'].includes(kind);
 export const deadline = (eventEpoch) => eventEpoch + WINDOW;
 export function status(eventEpoch, nowEpoch) {
   const msLeft = deadline(eventEpoch) - nowEpoch;

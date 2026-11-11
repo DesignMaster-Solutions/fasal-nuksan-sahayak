@@ -70,7 +70,8 @@ section "Verified on 05/11/2026". `rules.js` is pure (no DOM) and cites these pa
 | Landslide, waterlogging, cloud burst or any fire on a **cut** crop in the field | `not_listed_cut`: not a post-harvest peril; still report within 72 h through 14447 and ask | | 21.6.1, 21.5.4.3 |
 | Any peril on a crop **already taken home** | `stored`: these covers are for crop lying in the field; call 14447 if in doubt | | 21.6.1 |
 | Rain / cyclone on a standing crop; drought, dry spell, pest, disease or flood across the area | `widespread`: individual intimation "is not essential"; claims from the District Level Joint Committee report and yield data; check status via 14447 or the bank; for rain or a cyclone on a standing crop the screen still says to report within 72 hours, because insurers have refused such claims for no notice ([real cases](evidence/real-cases/README.md)) | | 5.1, 5.5 |
-| Wild animals, anything else | `other`: optional add-on only some States notify; ask 14447 or the bank | | 5.2.5 |
+| Wild animal attack (boar, nilgai, elephant, monkey) | `wild_animal`: report within 72 h in the Crop Insurance app with geotagged photographs, only where the State notified the add-on, the animal and the district | From Kharif 2026 the fifth add-on under localised risk: PIB release of 18/11/2025, <https://www.pib.gov.in/PressReleasePage.aspx?PRID=2191224>. Until 10/11/2026 this app told these farmers it counted no 72-hour window | 5.2.5 |
+| Anything else (theft) | `other`: no rule found in the guidelines; ask 14447 or the bank; no 72-hour clock | | 5.2.5 |
 
 - **72 hours** (OG 21.5.5.1 B, 21.6.6.1 B, Table 10): `deadline = event + 72 h`; exactly 72:00 is
   still open, 72:01 is closed. Past the window the app says so plainly, never promises, and still
