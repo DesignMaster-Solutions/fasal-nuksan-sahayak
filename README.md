@@ -13,7 +13,10 @@ rain on a harvested crop still drying in the field, it tells the farmer, in Engl
 - what to have ready, and a ready-to-read report with only what the farmer typed (blanks stay
   blank), to read out on the phone, copy, or send on WhatsApp; "Read aloud" when the phone has a
   Hindi or Indian English voice;
-- what happens next, the grievance route, and "Did you get a docket / ticket number?".
+- what happens next, the grievance route, and "Did you get a docket / ticket number?";
+- it **opens without internet after the first visit** (`sw.js`, network first, cache only when the
+  network fails): after a storm mobile data is often down, and the rules, the 72-hour clock and
+  the report all run on the phone. Calling 14447 needs no data.
 
 Built for *Code for a Billion 2026*, track **Agriculture**. Not a government service.
 
@@ -141,7 +144,7 @@ lines of `app.js`).
 
 ## Tests and mutation check
 
-`npm test` runs 64 tests with `node --test`; the first 43 were written before the code they test:
+`npm test` runs 78 tests with `node --test`; the first 43 were written before the code they test:
 
 - `tests/rules.test.mjs`: every peril x crop state maps to the right result; the 72-hour edge
   (71:59 open, 72:00 open, 72:01 closed); the post-harvest edge (day 14 inside, day 15 outside);

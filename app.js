@@ -218,3 +218,6 @@ for (const b of document.querySelectorAll('[data-lang]')) {
 $('date').max = istInputs(Date.now())[0];
 
 render();
+
+// Opens offline after the first visit (sw.js): the rules and the clock need no network.
+navigator.serviceWorker?.register('sw.js').catch(() => {});
