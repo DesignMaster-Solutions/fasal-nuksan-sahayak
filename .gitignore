@@ -5,3 +5,4 @@ node_modules/
 .af-run.sh
 .af-xt
 .DS_Store
+*.bak
