@@ -17,17 +17,17 @@
     <table id="totals"><tbody></tbody></table>
     <p class="card" id="open-share"></p>
     <h2>By language</h2>
-    <table id="langs"><thead><tr><th></th><th>Reports</th><th>72 h open</th><th>Shares</th><th>Docket yes</th><th>Docket no</th></tr></thead><tbody></tbody></table>
+    <table id="langs"><thead><tr><th></th><th>Reports</th><th>72 h open</th><th>Shares</th><th>Result links</th><th>Docket yes</th><th>Docket no</th></tr></thead><tbody></tbody></table>
     <h2>By day (UTC)</h2>
-    <table id="days"><thead><tr><th>Day</th><th>Reports</th><th>72 h open</th><th>Shares</th><th>Docket yes</th><th>Docket no</th></tr></thead><tbody></tbody></table>
+    <table id="days"><thead><tr><th>Day</th><th>Reports</th><th>72 h open</th><th>Shares</th><th>Result links</th><th>Docket yes</th><th>Docket no</th></tr></thead><tbody></tbody></table>
     <p class="hint">Reports = result cards shown after the five questions. 72 h open = reports prepared while an individual 72-hour intimation window (localized calamity, post-harvest loss, or a cut crop to report through 14447) was still open. Shares = report copied or sent on WhatsApp. Docket yes / no = answers to "Did you get a docket / ticket number from 14447 or the app?" ("Not yet" is not counted).</p>
   </main>
   <footer class="wrap foot"><p>Free and open-source: <a href="https://github.com/DesignMaster-Solutions/fasal-nuksan-sahayak">github.com/DesignMaster-Solutions/fasal-nuksan-sahayak</a></p></footer>
   <script type="module">
-    const EVENTS = ['report', 'open', 'share', 'docket_yes', 'docket_no'];
+    const EVENTS = ['report', 'open', 'share', 'share_link', 'docket_yes', 'docket_no'];
     const LABEL = {
       report: 'Reports prepared', open: 'Reports prepared while the 72 h window was still open',
-      share: 'Shares (copy or WhatsApp)', docket_yes: 'Got a docket / ticket number', docket_no: 'Did not get a docket number',
+      share: 'Shares (copy or WhatsApp)', share_link: 'Result link sent to someone else', docket_yes: 'Got a docket / ticket number', docket_no: 'Did not get a docket number',
     };
     const { since, counts } = await (await fetch('/api/stats', { cache: 'no-store' })).json();
     const n = (k) => counts[k] || 0;

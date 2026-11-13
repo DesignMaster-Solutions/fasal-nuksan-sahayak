@@ -13,6 +13,9 @@ rain on a harvested crop still drying in the field, it tells the farmer, in Engl
 - what to have ready, and a ready-to-read report with only what the farmer typed (blanks stay
   blank), to read out on the phone, copy, or send on WhatsApp; "Read aloud" when the phone has a
   Hindi or Indian English voice;
+- "Send this result to a family member on WhatsApp": a link that opens straight on the same result
+  and the same 72-hour clock, in the same language; it carries only the tapped answers (what
+  happened, when, crop standing or cut, how it was insured), nothing typed;
 - what happens next, the grievance route, and "Did you get a docket / ticket number?";
 - it **opens without internet after the first visit** (`sw.js`, network first, cache only when the
   network fails): after a storm mobile data is often down, and the rules, the 72-hour clock and
@@ -134,9 +137,9 @@ app reads a case differently, and limits: [`evidence/real-cases`](evidence/real-
 ## Privacy and the usage numbers
 
 Live, public and anonymous at `/stats` (JSON at `/api/stats`). The app sends, with
-`navigator.sendBeacon`, only `{event, lang}` for five events: `report` (result card shown),
+`navigator.sendBeacon`, only `{event, lang}` for six events: `report` (result card shown),
 `open` (result shown while an individual 72-hour window was still open), `share` (report copied
-or WhatsApp tapped), `docket_yes` and `docket_no` (answers to the docket question; "Not yet" is
+or WhatsApp tapped), `share_link` (the result link sent to someone else), `docket_yes` and `docket_no` (answers to the docket question; "Not yet" is
 not sent). The Worker rejects anything else, including any extra field, and stores totals, per
 language and per day (UTC) in one Durable Object. Nothing else: no peril, no State, no report
 text, no names or numbers, no IP. `?nostats` in the URL sends nothing (tested on the shipped
@@ -159,6 +162,9 @@ lines of `app.js`).
   unknown `/api/*` path 404; every other path served as a static file.
 - `tests/nostats.test.mjs`: runs the real `const NOSTATS =` / `const count =` lines of `app.js`
   with a fake browser: a normal visit sends `{event, lang}`, `?nostats` sends nothing.
+- `tests/share-link.test.mjs`: the answers round-trip through the result link with the same kind
+  and deadline; the link has no typed field; a missing, unknown or impossible answer (loss in the
+  future, harvest after the loss) opens the normal first screen.
 - `tests/real-cases.test.mjs`: every quote in `evidence/real-cases/cases.json` is word for word in
   the saved decision; each real case gives the kind and the IST deadline written for it; the numbers
   in `evidence/real-cases/README.md` match the data.

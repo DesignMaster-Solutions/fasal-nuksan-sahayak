@@ -14,7 +14,7 @@ const stats = async (c) => (await (await c.fetch(new Request('https://x/api/stat
 
 test('every valid event is counted in total, per language and per day', async () => {
   const c = counter();
-  for (const event of ['report', 'open', 'share', 'docket_yes', 'docket_no']) {
+  for (const event of ['report', 'open', 'share', 'share_link', 'docket_yes', 'docket_no']) {
     assert.equal((await c.fetch(post(JSON.stringify({ event, lang: 'hi' })))).status, 204, event);
   }
   assert.equal((await c.fetch(post(JSON.stringify({ event: 'report', lang: 'en' })))).status, 204);

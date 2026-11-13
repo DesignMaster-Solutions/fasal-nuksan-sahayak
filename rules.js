@@ -108,3 +108,25 @@ export function intimationText(f, lang) {
   lines.push('', t.r_request, '', `${t.r_sign}: ${v(f.name)}`);
   return lines.join('\n');
 }
+
+export const INSURED = ['loan', 'csc', 'portal', 'unsure'];
+
+// Link that opens straight on the same result and the same 72-hour clock for whoever receives it.
+// Only the language and the tapped answers travel: nothing typed (no name, mobile, account, village or crop).
+export function shareUrl(origin, a, lang) {
+  const p = new URLSearchParams({ lang, peril: a.peril, crop: a.cropState, at: a.eventEpoch, ins: a.insured });
+  if (a.cropState === 'cut_in_field') p.set('harvest', a.harvestDate);
+  return `${origin}/?${p}`;
+}
+
+// Answers from a shared link, or null unless every question has one of its own options and the dates are possible.
+export function answersFrom(search, now) {
+  const p = new URLSearchParams(search);
+  const at = /^\d{12,14}$/.test(p.get('at') || '') ? Number(p.get('at')) : NaN;
+  if (!PERILS.includes(p.get('peril')) || !CROP_STATES.includes(p.get('crop')) || !INSURED.includes(p.get('ins')) || !(at <= now + 5 * MIN)) return null;
+  const a = { peril: p.get('peril'), cropState: p.get('crop'), eventEpoch: at, insured: p.get('ins') };
+  if (a.cropState !== 'cut_in_field') return a;
+  const h = p.get('harvest') || '';
+  const real = /^\d{4}-\d{2}-\d{2}$/.test(h) && istInputs(istToEpoch(h))[0] === h && h <= istInputs(at)[0];
+  return real ? { ...a, harvestDate: h } : null;
+}

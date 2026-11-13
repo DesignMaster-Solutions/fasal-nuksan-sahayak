@@ -1,5 +1,5 @@
 import {
-  PERILS, CROP_STATES, classify, needsIndividualIntimation, status, deadline, formatIST, istToEpoch, istInputs, intimationText,
+  PERILS, CROP_STATES, INSURED, shareUrl, answersFrom, classify, needsIndividualIntimation, status, deadline, formatIST, istToEpoch, istInputs, intimationText,
 } from './rules.js';
 import { STRINGS, STATES } from './i18n.js';
 
@@ -20,7 +20,6 @@ const ICON = {
   hail: '🌨️', landslide: '⛰️', inundation: '🌊', cloudburst: '⛈️', lightning_fire: '🔥', fire_other: '🚒', rain_cyclone: '🌀', drought_pest: '🐛', wild_animal: '🐗', other: '❔',
   standing: '🌾', cut_in_field: '✂️', stored: '🏠', loan: '🏦', csc: '🏢', portal: '📱', unsure: '❓',
 };
-const INSURED = ['loan', 'csc', 'portal', 'unsure'];
 
 let view = 'intro';
 let stepIndex = 0;
@@ -144,6 +143,7 @@ function renderReport() {
   $('report-other').textContent = intimationText(f, otherLang());
   $('report-other').lang = otherLang();
   $('share').href = `https://wa.me/?text=${encodeURIComponent($('report').textContent)}`;
+  $('pass').href = `https://wa.me/?text=${encodeURIComponent(`${t('pass_text')} ${shareUrl(location.origin, a, lang)}`)}`;
 }
 
 function renderResult() {
@@ -189,6 +189,7 @@ $('copy').onclick = async () => {
   setTimeout(() => { label.textContent = t('copy'); }, 2000);
 };
 $('share').onclick = () => count('share');
+$('pass').onclick = () => count('share_link');
 $('fields').oninput = renderReport;
 $('fields').onsubmit = (e) => e.preventDefault();
 $('show-other').onchange = renderReport;
@@ -217,7 +218,9 @@ for (const b of document.querySelectorAll('[data-lang]')) {
 }
 $('date').max = istInputs(Date.now())[0];
 
-render();
+// A link sent by a relative opens straight on the result they saw (not counted as a report).
+const shared = answersFrom(location.search, Date.now());
+if (shared) { a = { ...shared, result: classify(shared) }; show('result'); } else render();
 
 // Opens offline after the first visit (sw.js): the rules and the clock need no network.
 navigator.serviceWorker?.register('sw.js').catch(() => {});

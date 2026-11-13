@@ -2,7 +2,7 @@
 // Anonymous usage counter for the impact data (one Durable Object, so increments are atomic):
 // it stores the event name and the language as totals, per language and per day (UTC).
 // Never the peril, the State, the report text, names, numbers or IPs. GET /api/stats is public.
-const EVENTS = new Set(['report', 'open', 'share', 'docket_yes', 'docket_no']);
+const EVENTS = new Set(['report', 'open', 'share', 'share_link', 'docket_yes', 'docket_no']);
 const LANGS = new Set(['en', 'hi']);
 
 export class Counter {
